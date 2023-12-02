@@ -39,6 +39,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"bits-ui": "^0.9.9",
 		"clsx": "^2.0.0",
 		"lucide-svelte": "^0.294.0",
 		"monaco-editor": "^0.44.0",
