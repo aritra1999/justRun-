@@ -1,11 +1,11 @@
 <script lang="ts">
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import * as Select from '$lib/components/ui/select';
-
 	import Settings from '$lib/components/settings/settings.svelte';
-	import { GanttChart } from 'lucide-svelte';
 	import Run from '$lib/components/run/run.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import Theme from '$lib/components/theme/theme.svelte';
+
+	import { GanttChart } from 'lucide-svelte';
 </script>
 
 <div class="fixed top-6 right-6 z-50 flex space-x-3">
@@ -19,7 +19,9 @@
 			</Button>
 		</DropdownMenu.Trigger>
 		<DropdownMenu.Content>
-			<DropdownMenu.Group>Hello World</DropdownMenu.Group>
+			<DropdownMenu.Group>
+				<Theme />
+			</DropdownMenu.Group>
 		</DropdownMenu.Content>
 	</DropdownMenu.Root>
 </div>
