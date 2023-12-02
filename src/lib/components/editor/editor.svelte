@@ -9,6 +9,8 @@
   let monaco: typeof Monaco;
   let editorContainer: HTMLElement;
   let options = {
+    theme: 'vs-light',
+    automaticLayout: true,
     minimap: { enabled: false },
   }
 
