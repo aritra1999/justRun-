@@ -4,17 +4,20 @@
 	import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api';
 
 	export let content: string;
+	export let language: string;
+	export let editable: boolean;
 
 	let editor: Monaco.editor.IStandaloneCodeEditor;
 	let monaco: typeof Monaco;
 	let editorContainer: HTMLElement;
 	let options = {
-		fontSize: 14,
+		fontSize: 15,
 		fontFamily: 'JetBrains Mono',
 		fontLigatures: true,
 		roundedSelection: true,
 		scrollBeyondLastLine: false,
-		theme: 'vs-light',
+		theme: 'vs-dark',
+		readOnly: !editable,
 		automaticLayout: true,
 		minimap: { enabled: false }
 	};
@@ -26,7 +29,7 @@
 		monaco = await loader.init();
 
 		const editor = monaco.editor.create(editorContainer, options);
-		const model = monaco.editor.createModel(content, 'cpp');
+		const model = monaco.editor.createModel(content, language);
 
 		editor.setModel(model);
 	});
