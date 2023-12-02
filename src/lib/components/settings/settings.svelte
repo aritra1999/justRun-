@@ -84,8 +84,6 @@
 						</Select.Content>
 					</Select.Root>
 				</div>
-				<DropdownMenu.Separator />
-
 				<Theme />
 			</DropdownMenu.Group>
 		</DropdownMenu.Content>
