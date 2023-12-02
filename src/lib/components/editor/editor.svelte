@@ -8,6 +8,9 @@
   let editor: Monaco.editor.IStandaloneCodeEditor;
   let monaco: typeof Monaco;
   let editorContainer: HTMLElement;
+  let options = {
+    minimap: { enabled: false },
+  }
 
   onMount(async () => {
         const monacoEditor = await import('monaco-editor');
@@ -15,7 +18,7 @@
 
         monaco = await loader.init();
 
-        const editor = monaco.editor.create(editorContainer);
+        const editor = monaco.editor.create(editorContainer, options);
         const model = monaco.editor.createModel(content, 'cpp');
         
         editor.setModel(model);
