@@ -11,7 +11,7 @@
 <div class="fixed top-6 right-6 z-50 flex space-x-3">
 	<Run />
 	<Settings />
-
+	<Theme />
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger>
 			<Button variant="secondary" class="p-3">
@@ -19,9 +19,7 @@
 			</Button>
 		</DropdownMenu.Trigger>
 		<DropdownMenu.Content>
-			<DropdownMenu.Group>
-				<Theme />
-			</DropdownMenu.Group>
+			<DropdownMenu.Group>About Me</DropdownMenu.Group>
 		</DropdownMenu.Content>
 	</DropdownMenu.Root>
 </div>
