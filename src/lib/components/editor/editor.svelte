@@ -14,8 +14,6 @@
 		fontSize: 15,
 		fontFamily: 'JetBrains Mono',
 		fontLigatures: true,
-		roundedSelection: true,
-		scrollBeyondLastLine: false,
 		theme: 'vs-dark',
 		readOnly: !editable,
 		automaticLayout: true,
@@ -32,6 +30,9 @@
 		const model = monaco.editor.createModel(content, language);
 
 		editor.setModel(model);
+		editor.getModel()?.onDidChangeContent((event) => {
+			content = editor.getModel()?.getValue() || content;
+		});
 	});
 
 	onDestroy(() => {
@@ -40,7 +41,7 @@
 	});
 </script>
 
-<div class="h-full w-full rounded-lg editor" bind:this={editorContainer} />
+<div class="h-full w-full rounded-lg editor bg-background" bind:this={editorContainer} />
 
 <style>
 	.editor {
