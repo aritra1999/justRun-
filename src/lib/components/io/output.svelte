@@ -1,7 +1,11 @@
-<script>
-	import Editor from '../editor/editor.svelte';
+<script lang="ts">
+	import { Textarea } from '$lib/components/ui/textarea';
+	import { outputStore } from '$lib/store/store';
+
+	$: value = $outputStore;
+	$: console.log(value);
 </script>
 
-<div class="bg-background w-full h-full rounded-lg">
-	<Editor language="text" content="" editable={false} />
+<div class="w-full h-full">
+	<Textarea class="text-foreground h-full bg-zinc-900 io" {value} readonly />
 </div>
