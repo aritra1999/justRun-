@@ -1,24 +1,31 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
+	import { codeStore, outputStore } from '$lib/store/store';
 	import { Loader, Play } from 'lucide-svelte';
 
 	let loading = false;
-	let language = 'cpp';
-	let code = 'dummy code';
-	let input = 'dummy input';
 
 	export const runCode = async () => {
 		loading = true;
-		await fetch('/api/run', {
+		const outputObject = await fetch('/api/run', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ language, code, input })
+			body: JSON.stringify({
+				language: $codeStore.language,
+				code: $codeStore.code,
+				input: $codeStore.input
+			})
 		})
 			.then((res) => res.json())
 			.catch((err) => console.log(err))
-			.finally(() => (loading = false));
+			.finally(() => {
+				console.log('done');
+				loading = false;
+			});
+
+		outputStore.set(outputObject.message);
 	};
 </script>
 
