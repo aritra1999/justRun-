@@ -48,7 +48,7 @@
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger>
-		<Button variant="secondary" class="p-3">
+		<Button variant="secondary" class="p-2.5">
 			<Settings class="h-5 w-5" />
 		</Button>
 	</DropdownMenu.Trigger>

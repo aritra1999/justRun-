@@ -29,11 +29,11 @@
 	};
 </script>
 
-<Button on:click={runCode} class="flex items-center text-lg" size="lg" variant="secondary">
+<Button on:click={runCode} class="flex items-center" variant="secondary">
 	Run
 	{#if loading}
-		<Loader class="h-5 w-5 ml-3 animate-spin" />
+		<Loader class="h-4 w-4 ml-3 animate-spin" />
 	{:else}
-		<Play class="h-5 w-5 ml-3" />
+		<Play class="h-4 w-4 ml-3" />
 	{/if}
 </Button>

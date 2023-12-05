@@ -27,7 +27,7 @@
 	}
 </script>
 
-<Button on:click={handleSwitchDarkMode} variant="secondary" class="p-3">
+<Button on:click={handleSwitchDarkMode} variant="secondary" class="p-2.5">
 	{#if darkMode}
 		<Sun class="w-5 h-5" />
 	{:else}

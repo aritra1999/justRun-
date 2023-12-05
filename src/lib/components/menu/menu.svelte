@@ -14,7 +14,7 @@
 	<Theme />
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger>
-			<Button variant="secondary" class="p-3">
+			<Button variant="secondary" class="p-2.5">
 				<GanttChart class="w-5 h-5" />
 			</Button>
 		</DropdownMenu.Trigger>
