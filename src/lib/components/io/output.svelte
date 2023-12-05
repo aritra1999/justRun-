@@ -10,5 +10,4 @@
 
 <div class="w-full h-full">
 	<Editor language="text" bind:content editable={false} />
-	<!-- <Textarea class="text-foreground h-full bg-zinc-900 io" {value} readonly /> -->
 </div>

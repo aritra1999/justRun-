@@ -1,14 +1,27 @@
 import { writable } from 'svelte/store';
 
-export const editorStore = writable({
-	fontSize: 14,
+export const defaultEditorConfig = {
+	fontSize: 15,
+	tabSize: 8,
 	fontFamily: 'JetBrains Mono',
 	fontLigatures: true,
-	roundedSelection: true,
-	scrollBeyondLastLine: false,
-	theme: 'vs-light',
+	theme: 'vs-dark',
 	automaticLayout: true,
 	minimap: { enabled: false }
+};
+
+export const editorStore = writable(defaultEditorConfig);
+
+export const metaStore = writable({
+	runningCode: false,
+	laguage: {
+		value: 'cpp',
+		label: 'C++'
+	},
+	theme: {
+		value: 'vs-dark',
+		label: 'VS Code Dark'
+	}
 });
 
 export const codeStore = writable({
