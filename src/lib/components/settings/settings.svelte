@@ -1,46 +1,41 @@
 <script lang="ts">
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import * as Select from '$lib/components/ui/select';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { editorStore, metaStore } from '$lib/store/store';
 
-	import { Settings } from 'lucide-svelte';
-	import { Button } from '../ui/button';
+	import { Minus, Plus, Settings } from 'lucide-svelte';
 
 	const settings = {
 		theme: {
 			'vs-light': {
-				name: 'VS Code Light',
-				selected: true
+				name: 'VS Code Light'
 			},
 			'vs-dark': {
-				name: 'VS Code Dark',
-				selected: false
+				name: 'VS Code Dark'
 			}
 		},
 		language: {
 			cpp: {
 				name: 'C++',
-				disabled: false,
-				selected: true
+				disabled: false
 			},
 			js: {
 				name: 'JS',
-				disabled: true,
-				selected: false
+				disabled: true
 			},
 			go: {
 				name: 'Go',
-				disabled: true,
-				selected: false
+				disabled: true
 			},
 			python: {
 				name: 'Python',
-				disabled: true,
-				selected: false
+				disabled: true
 			},
 			java: {
 				name: 'Java',
-				disabled: true,
-				selected: false
+				disabled: true
 			}
 		}
 	};
@@ -48,14 +43,19 @@
 
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger>
-		<Button variant="secondary" class="p-3">
+		<Button variant="secondary" class="p-2.5">
 			<Settings class="h-5 w-5" />
 		</Button>
 	</DropdownMenu.Trigger>
 	<DropdownMenu.Content>
 		<DropdownMenu.Group>
 			<div class="mb-3">
-				<Select.Root>
+				<Select.Root
+					selected={$metaStore.theme}
+					onSelectedChange={({ value }) => {
+						$editorStore.theme = value;
+					}}
+				>
 					<Select.Trigger>
 						<Select.Value placeholder="Theme" />
 					</Select.Trigger>
@@ -66,8 +66,8 @@
 					</Select.Content>
 				</Select.Root>
 			</div>
-			<div>
-				<Select.Root>
+			<div class="mb-3">
+				<Select.Root selected={$metaStore.laguage}>
 					<Select.Trigger>
 						<Select.Value placeholder="Language" />
 					</Select.Trigger>
@@ -82,6 +82,18 @@
 						{/each}
 					</Select.Content>
 				</Select.Root>
+			</div>
+			<div class="flex items-center justify-between">
+				<div>Font Size:</div>
+				<div class="flex space-x-3">
+					<Button variant="secondary" class="p-2.5" on:click={() => $editorStore.fontSize--}>
+						<Minus class="h-4 w-4" />
+					</Button>
+					<Input class="w-20" bind:value={$editorStore.fontSize} disabled />
+					<Button variant="secondary" class="p-2.5" on:click={() => $editorStore.fontSize++}>
+						<Plus class="h-4 w-4" />
+					</Button>
+				</div>
 			</div>
 		</DropdownMenu.Group>
 	</DropdownMenu.Content>

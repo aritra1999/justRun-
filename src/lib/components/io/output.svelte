@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { Textarea } from '$lib/components/ui/textarea';
 	import { outputStore } from '$lib/store/store';
+	import Editor from '$lib/components/editor/editor.svelte';
 
-	$: value = $outputStore;
-	$: console.log(value);
+	let content: string;
+	outputStore.subscribe((output) => {
+		content = output;
+	});
 </script>
 
 <div class="w-full h-full">
-	<Textarea class="text-foreground h-full bg-zinc-900 io" {value} readonly />
+	<Editor language="text" bind:content editable={false} />
 </div>

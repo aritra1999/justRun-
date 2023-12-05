@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { Moon, Sun } from 'lucide-svelte';
-	import { Button } from '../ui/button';
+	import { Button } from '$lib/components/ui/button';
 
 	let darkMode = true;
 
@@ -27,7 +27,7 @@
 	}
 </script>
 
-<Button on:click={handleSwitchDarkMode} variant="secondary" class="p-3">
+<Button on:click={handleSwitchDarkMode} variant="secondary" class="p-2.5">
 	{#if darkMode}
 		<Sun class="w-5 h-5" />
 	{:else}

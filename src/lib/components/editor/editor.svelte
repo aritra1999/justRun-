@@ -2,6 +2,7 @@
 	import loader from '@monaco-editor/loader';
 	import { onDestroy, onMount } from 'svelte';
 	import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api';
+	import { defaultEditorConfig, editorStore } from '$lib/store/store';
 
 	export let content: string;
 	export let language: string;
@@ -10,15 +11,17 @@
 	let editor: Monaco.editor.IStandaloneCodeEditor;
 	let monaco: typeof Monaco;
 	let editorContainer: HTMLElement;
-	let options = {
-		fontSize: 15,
-		fontFamily: 'JetBrains Mono',
-		fontLigatures: true,
-		theme: 'vs-dark',
-		readOnly: !editable,
-		automaticLayout: true,
-		minimap: { enabled: false }
-	};
+	let options = { ...defaultEditorConfig, readonly: !editable };
+
+	function updateEditorContentOnOutputChange(content: string) {
+		if (!editable) editor?.setValue(content);
+	}
+
+	$: updateEditorContentOnOutputChange(content);
+
+	editorStore.subscribe((config) => {
+		editor?.updateOptions(config);
+	});
 
 	onMount(async () => {
 		const monacoEditor = await import('monaco-editor');
@@ -26,7 +29,7 @@
 
 		monaco = await loader.init();
 
-		const editor = monaco.editor.create(editorContainer, options);
+		editor = monaco.editor.create(editorContainer, options);
 		const model = monaco.editor.createModel(content, language);
 
 		editor.setModel(model);
