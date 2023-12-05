@@ -20,13 +20,15 @@
 		minimap: { enabled: false }
 	};
 
+	$: content, editor?.setValue(content);
+
 	onMount(async () => {
 		const monacoEditor = await import('monaco-editor');
 		loader.config({ monaco: monacoEditor.default });
 
 		monaco = await loader.init();
 
-		const editor = monaco.editor.create(editorContainer, options);
+		editor = monaco.editor.create(editorContainer, options);
 		const model = monaco.editor.createModel(content, language);
 
 		editor.setModel(model);
