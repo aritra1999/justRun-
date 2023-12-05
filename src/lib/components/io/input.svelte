@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Editor from '../editor/editor.svelte';
-	// import Textarea from '../ui/textarea/textarea.svelte';
-	// export let input: string;
+	import Editor from '$lib/components/editor/editor.svelte';
 	export let input: string;
 </script>
 

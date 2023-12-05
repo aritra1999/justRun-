@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { outputStore } from '$lib/store/store';
-	import Editor from '../editor/editor.svelte';
+	import Editor from '$lib/components/editor/editor.svelte';
 
 	let content: string;
 	outputStore.subscribe((output) => {
