@@ -20,11 +20,11 @@
 
 <Menu />
 <div class="h-screen w-screen flex">
-	<div class="h-screen w-1/2 p-3 pr-0">
-		<Editor bind:content={code} bind:language editable={true} />
+	<div class="h-screen w-1/2 p-2 pr-0">
+		<Editor bind:content={code} bind:language editable={true} fileName="code.cpp" />
 	</div>
-	<div class="h-screen w-1/2 flex flex-col p-3">
-		<div class=" h-1/2 pb-3">
+	<div class="h-screen w-1/2 flex flex-col p-2">
+		<div class=" h-1/2 pb-2">
 			<Input bind:input />
 		</div>
 		<div class="h-1/2">
