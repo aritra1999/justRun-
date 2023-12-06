@@ -9,5 +9,5 @@
 </script>
 
 <div class="w-full h-full">
-	<Editor language="text" bind:content editable={false} />
+	<Editor language="text" bind:content editable={false} fileName="output.txt" />
 </div>

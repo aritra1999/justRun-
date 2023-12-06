@@ -4,5 +4,5 @@
 </script>
 
 <div class="w-full h-full">
-	<Editor language="text" bind:content={input} editable={true} />
+	<Editor language="text" bind:content={input} editable={true} fileName="input.txt" />
 </div>
