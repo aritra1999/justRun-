@@ -4,6 +4,7 @@
 	import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api';
 	import { defaultEditorConfig, editorStore } from '$lib/store/store';
 
+	export let fileName: string;
 	export let content: string;
 	export let language: string;
 	export let editable: boolean;
@@ -44,7 +45,12 @@
 	});
 </script>
 
-<div class="h-full w-full rounded-lg editor bg-background" bind:this={editorContainer} />
+<div class="flex flex-col h-full w-full bg-background rounded-lg p-2">
+	<div class="w-fit px-4 py-1.5 bg-secondary rounded-t-md editor text-sm">
+		{fileName ?? 'untitled*'}
+	</div>
+	<div class="h-full w-full rounded-lg editor bg-background" bind:this={editorContainer} />
+</div>
 
 <style>
 	.editor {
